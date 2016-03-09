@@ -16,3 +16,16 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Employee(models.Model):
+
+    user = models.OneToOneField(User, related_name='employee')
+    company = models.ForeignKey(Company, related_name='employees')
+
+    class Meta:
+        verbose_name = "Employee"
+        verbose_name_plural = "Employees"
+
+    def __str__(self):
+        return self.user.get_full_name()
