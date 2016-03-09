@@ -16,4 +16,7 @@ class Log(models.Model):
         verbose_name_plural = "Logs"
 
     def __str__(self):
-        return '{0}\'s log at {1}'.format(self.owner.first_name, self.start)
+        name = (self.owner.username
+                if self.owner.first_name == '' else self.owner.first_name)
+        start = self.start.strftime('%B %d, %Y %I:%M%p')
+        return '{0}\'s log on {1}'.format(name, start)
