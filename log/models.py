@@ -9,7 +9,7 @@ class Log(models.Model):
 
     owner = models.ForeignKey(User, related_name='logs')
     start = models.DateTimeField(auto_now_add=True)
-    end = models.DateTimeField(null=True)
+    end = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         verbose_name = "Log"
