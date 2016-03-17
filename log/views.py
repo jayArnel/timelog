@@ -18,7 +18,7 @@ class HomeView(TemplateView):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    msg['status'] = 401
+                    msg['status'] = 200
                     msg['redirect_url'] = '/log'
                 else:
                     msg['error'] = "This user account is deactivated. \
