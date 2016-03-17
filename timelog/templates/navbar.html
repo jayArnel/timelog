@@ -1,8 +1,9 @@
 <nav>
-    <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Time Log</a>
+    <div class="nav-wrapper container">
+        <a href="{% url 'home' %}" class="brand-logo">Time Log</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="#">Welcome, {{ user }}</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </div>
 </nav>
