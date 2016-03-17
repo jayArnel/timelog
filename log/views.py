@@ -1,7 +1,8 @@
 import json
 
 from django.contrib.auth import authenticate, login
-from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
+from django.http import (
+    HttpResponse, HttpResponseForbidden, HttpResponseRedirect)
 from django.views.generic import TemplateView, View
 # Create your views here.
 
