@@ -1,2 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% block page_css %}
+    <link rel="stylesheet" href="{% static 'log/css/timelog.css' %}">
+{% endblock %}
+{% block page_content %}
+<div class="container" id="timelog">
+    <a class="btn-large">Time In</a>
+</div>
+{% endblock %}
