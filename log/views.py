@@ -1,6 +1,7 @@
 import json
 
 from django.contrib.auth import authenticate, login
+from django.conf import settings
 from django.http import (
     HttpResponse, HttpResponseForbidden, HttpResponseRedirect)
 from django.views.generic import TemplateView, View
@@ -12,7 +13,7 @@ class HomeView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated():
-            return HttpResponseRedirect('/log')
+            return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
         return super(HomeView, self).get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
@@ -25,7 +26,7 @@ class HomeView(TemplateView):
                 if user.is_active:
                     login(request, user)
                     msg['status'] = 200
-                    msg['redirect_url'] = '/log'
+                    msg['redirect_url'] = settings.LOGIN_REDIRECT_URL
                 else:
                     msg['error'] = "This user account is deactivated. \
                         Please contact your administrator"
