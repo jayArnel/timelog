@@ -74,3 +74,19 @@ class TimeInView(LoginRequiredMixin, View):
             else:
                 status = 401
         return HttpResponse(status=status)
+
+
+class TimeOutView(LoginRequiredMixin, View):
+
+    def post(self, request, *args, **kwargs):
+        status = 400
+        if request.is_ajax():
+            pk = request.POST.get('pk')
+            user = get_object_or_404(User, pk=pk)
+            if request.user == user:
+                employee = Employee.objects.get(user__pk=self.request.user.pk)
+                employee.timeout()
+                status = 200
+            else:
+                status = 401
+        return HttpResponse(status=status)
