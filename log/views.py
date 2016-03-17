@@ -1,6 +1,7 @@
 import json
 
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 from django.http import (
     HttpResponse, HttpResponseForbidden, HttpResponseRedirect)
@@ -38,5 +39,5 @@ class HomeView(TemplateView):
         return HttpResponseForbidden()
 
 
-class LogView(TemplateView):
+class LogView(LoginRequiredMixin, TemplateView):
     template_name = 'log/timelog/timelog.html'
