@@ -57,7 +57,7 @@ class LogView(LoginRequiredMixin, TemplateView):
 class TimeInView(LoginRequiredMixin, View):
 
     def post(self, request, *args, **kwargs):
-        statu = 400
+        status = 400
         if request.is_ajax():
             pk = request.POST.get('pk')
             user = get_object_or_404(User, pk=pk)
