@@ -8,12 +8,14 @@ require(['jquery'], function($){
         $.post(url, data, function(response) {
             var msg = JSON.parse(response);
             if (msg.status === 401) {
+                form.find('input#password').val('');
+                form.find('input#username').focus();
                 form.find('#error-message').text(msg.error);
             } else if (msg.status === 200){
                 window.location.href = msg.redirect_url
             }
-
         });
     });
+
 
 });
