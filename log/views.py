@@ -2,11 +2,15 @@ import json
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.conf import settings
 from django.http import (
     HttpResponse, HttpResponseForbidden, HttpResponseRedirect)
+from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, View
 # Create your views here.
+
+from log.models import Log
 
 
 class HomeView(TemplateView):
@@ -48,3 +52,18 @@ class LogoutView(LoginRequiredMixin, View):
 
 class LogView(LoginRequiredMixin, TemplateView):
     template_name = 'log/timelog/timelog.html'
+
+
+class TimeInView(LoginRequiredMixin, View):
+
+    def post(self, request, *args, **kwargs):
+        statu = 400
+        if request.is_ajax():
+            pk = request.POST.get('pk')
+            user = get_object_or_404(User, pk=pk)
+            if request.user == user:
+                status = 200
+                Log.objects.create(owner=user)
+            else:
+                status = 401
+        return HttpResponse(status=status)
