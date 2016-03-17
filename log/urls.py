@@ -4,4 +4,5 @@ import views
 
 urlpatterns = [
     url(r'^$', views.HomeView.as_view(), name='home'),
+    url(r'^log/$', views.LogView.as_view(), name='log'),
 ]
