@@ -5,6 +5,9 @@
 {% endblock %}
 {% block page_content %}
 <div class="container" id="timelog">
-    <a class="btn-large">Time In</a>
+    <a class="btn-large" id="timein">Time In</a>
 </div>
+{% endblock %}
+{% block page_javascript %}
+<script src="{% static 'log/js/timelog.js' %}"></script>
 {% endblock %}
