@@ -1,6 +1,6 @@
 import json
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 from django.http import (
@@ -37,6 +37,13 @@ class HomeView(TemplateView):
                 msg['status'] = 401
             return HttpResponse(json.dumps(msg))
         return HttpResponseForbidden()
+
+
+class LogoutView(LoginRequiredMixin, View):
+
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return HttpResponseRedirect(settings.LOGIN_URL)
 
 
 class LogView(LoginRequiredMixin, TemplateView):
