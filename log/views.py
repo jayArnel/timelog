@@ -29,3 +29,7 @@ class HomeView(TemplateView):
                 msg['status'] = 401
             return HttpResponse(json.dumps(msg))
         return HttpResponseForbidden()
+
+
+class LogView(TemplateView):
+    template_name = 'log/timelog/timelog.html'
