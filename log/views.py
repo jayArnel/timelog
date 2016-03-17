@@ -9,6 +9,11 @@ from django.views.generic import TemplateView, View
 class HomeView(TemplateView):
     template_name = 'log/home/home.html'
 
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated():
+            return HttpResponseRedirect('/log')
+        return super(HomeView, self).get(request, *args, **kwargs)
+
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
             username = request.POST.get('username')
