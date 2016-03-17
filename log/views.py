@@ -11,6 +11,7 @@ from django.views.generic import TemplateView, View
 # Create your views here.
 
 from log.models import Log
+from company.models import Employee
 
 
 class HomeView(TemplateView):
@@ -52,6 +53,12 @@ class LogoutView(LoginRequiredMixin, View):
 
 class LogView(LoginRequiredMixin, TemplateView):
     template_name = 'log/timelog/timelog.html'
+
+    def get_context_data(self, **kwargs):
+        context = {}
+        employee = Employee.objects.get(user__pk=self.request.user.pk)
+        context['employee'] = employee
+        return context
 
 
 class TimeInView(LoginRequiredMixin, View):
