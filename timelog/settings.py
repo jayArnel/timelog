@@ -48,7 +48,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -133,3 +133,9 @@ STATICFILES_DIRS = [
 STATIC_URL = '/static/'
 STORAGE_PATH = './storage'
 STATIC_ROOT = STORAGE_PATH + '/static'
+
+# Check to see if there are any overrides in local_settings
+try:
+    from local_settings import *
+except ImportError:
+    pass
