@@ -4,19 +4,29 @@ var watch      = require('gulp-watch');
 var plumber    = require('gulp-plumber');
 var autoprefixer = require('gulp-autoprefixer');
 
+var paths = {
+    watch: [
+        'log/static/log/css/*.less',
+        'timelog/static/core/css/*.less',
+        ],
+    style: 'storage/static/core/css/timelog.less',
+    base: 'storage/static',
+    build: 'storage/static/build'
+}
+
 
 /* Task to compile less */
 gulp.task('compile-less', function() {
-  gulp.src(['storage/static/**/less/*.less'])
+  gulp.src(paths.style, {base: paths.base})
     .pipe(plumber())
     .pipe(less())
     .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
-    .pipe(gulp.dest('storage/static'));
+    .pipe(gulp.dest(paths.build));
 });
 
 /* Task to watch less changes */
 gulp.task('watch-less', function() {
-  gulp.watch(['log/static/log/css/*.less'],
+  gulp.watch(paths.watch,
              ['compile-less']);
 });
 
