@@ -11,7 +11,7 @@ var paths = {
         ],
     style: 'storage/static/core/css/timelog.less',
     base: 'storage/static',
-    build: 'storage/static/build'
+    build: 'timelog/static/build'
 }
 
 
