@@ -34,7 +34,7 @@ class Employee(models.Model):
     @property
     def is_timed_in(self):
         last_log = self.user.logs.all().last()
-        return not last_log.end
+        return last_log and not last_log.end
 
     def timeout(self):
         last_log = self.user.logs.all().last()
