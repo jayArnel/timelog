@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block page_title %} Time Log {% endblock %}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'build/core/css/timelog.css' %}">
     {% block page_css %}
     {% endblock %}
   </head>
@@ -21,8 +21,8 @@
     {% block page_content %}{% endblock %}
     </main>
   </body>
-  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+  <script src="{% static 'core/js/jquery-1.11.3.min.js' %}"></script>
+  <script src="{% static 'core/js/materialize.min.js' %}"></script>
   <script src="{% static 'core/js/require.js' %}"></script>
   <script src="{% static 'core/js/require-config.js' %}"></script>
   {% block page_javascript %}{% endblock %}

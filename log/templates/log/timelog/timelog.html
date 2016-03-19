@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block page_css %}
-    <link rel="stylesheet" href="{% static 'log/css/timelog.css' %}">
-{% endblock %}
 {% block page_content %}
 <div class="container" id="timelog" data-user="{{ user.pk }}">
     {% if employee.is_timed_in %}
