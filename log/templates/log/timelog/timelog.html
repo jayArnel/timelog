@@ -3,9 +3,9 @@
 {% block page_content %}
 <div class="container" id="timelog" data-user="{{ user.pk }}">
     {% if employee.is_timed_in %}
-        <a class="btn-large red lighten-1" id="timeout" href="{% url 'timeout' %}">Time Out</a>
+        <a class="timeout" id="time" href="{% url 'timeout' %}">Time Out</a>
     {% else %}
-        <a class="btn-large" id="timein" href="{% url 'timein' %}">Time In</a>
+        <a class="timein" id="time" href="{% url 'timein' %}">Time In</a>
     {% endif %}
 </div>
 {% endblock %}
