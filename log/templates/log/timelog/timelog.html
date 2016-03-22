@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block page_content %}
 <div class="container" id="timelog" data-user="{{ user.pk }}">
-    <a class="{% if employee.is_timed_in %}timeout{% else %}timein{% endif %}" id="time">{% if employee.is_timed_in %}Time Out{% else %}Time In{% endif %}</a>
+    <a class="{{time_class}}" id="time">{{time_txt}}</a>
 </div>
 {% endblock %}
 {% block page_javascript %}

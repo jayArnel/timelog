@@ -58,6 +58,8 @@ class LogView(LoginRequiredMixin, TemplateView):
         context = {}
         employee = Employee.objects.get(user__pk=self.request.user.pk)
         context['employee'] = employee
+        context['time_class'] = 'timeout' if employee.is_timed_in else 'timein'
+        context['time_txt'] = 'Time Out' if employee.is_timed_in else 'Time In'
         return context
 
 
