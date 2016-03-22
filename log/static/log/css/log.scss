@@ -1,11 +1,14 @@
 #timelog {
-    padding: 25px 0; 
+    padding: 25px 0;
 
-    .timeout {
-        @extend .btn-large, .red, .lighten-1;
-    }
+    #time {
+        width: 150px;
+        &.timeout {
+            @extend .btn-large, .red, .lighten-1;
+        }
 
-    .timein{
-        @extend .btn-large;
+        &.timein{
+            @extend .btn-large;
+        }
     }
 }
