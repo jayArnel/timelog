@@ -1,11 +1,7 @@
 {% extends 'base.html' %}
 {% block page_content %}
 <div class="container" id="timelog" data-user="{{ user.pk }}">
-    {% if employee.is_timed_in %}
-        <a class="timeout" id="time" href="{% url 'timeout' %}">Time Out</a>
-    {% else %}
-        <a class="timein" id="time" href="{% url 'timein' %}">Time In</a>
-    {% endif %}
+    <a class="{% if employee.is_timed_in %}timeout{% else %}timein{% endif %}" id="time">{% if employee.is_timed_in %}Time Out{% else %}Time In{% endif %}</a>
 </div>
 {% endblock %}
 {% block page_javascript %}
