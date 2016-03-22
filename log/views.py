@@ -67,6 +67,7 @@ class TimeView(LoginRequiredMixin, View):
 
     def post(self, request, *args, **kwargs):
         status = 400
+        msg = {}
         if request.is_ajax():
             pk = request.POST.get('pk')
             user = get_object_or_404(User, pk=pk)
@@ -75,8 +76,10 @@ class TimeView(LoginRequiredMixin, View):
                 employee = Employee.objects.get(user__pk=self.request.user.pk)
                 if employee.is_timed_in:
                     employee.timeout()
+                    msg['text'] = 'Time In'
                 else:
                     Log.objects.create(owner=user)
+                    msg['text'] = 'Time Out'
             else:
                 status = 401
-        return HttpResponse(status=status)
+        return HttpResponse(json.dumps(msg), status=status)
