@@ -3,11 +3,9 @@
 
     .timeout {
         @extend .btn-large, .red, .lighten-1;
-        content: 'Time Out';
     }
 
     .timein{
         @extend .btn-large;
-        content: 'Time In';  
     }
 }
