@@ -2,13 +2,14 @@ require(['jquery', 'cookies'], function($, cookies){
     var container = $('.container#timelog');
 
     /**
-     * Add a log instance for the user
+     * Handle logging of time
      * @param  {[Event]} e [description]
      * @return none
      */
     function time(e){
         e.preventDefault();
         var pk = container.data('user');
+        var _this = $(this);
         $.ajax({
             url: '/time/',
             type: 'post',
@@ -18,7 +19,9 @@ require(['jquery', 'cookies'], function($, cookies){
                 xhr.setRequestHeader("X-CSRFToken", csrftoken);
             },
             success: function(response) {
-                console.log('timed');
+                var msg = JSON.parse(response);
+                _this.toggleClass('timein timeout');
+                _this.html(msg.text);
             },
         })
     }
