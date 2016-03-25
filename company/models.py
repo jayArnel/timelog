@@ -37,6 +37,10 @@ class Employee(models.Model):
         last_log = self.user.logs.all().last()
         return last_log and not last_log.end
 
+    @property
+    def last_log(self):
+        return self.user.logs.all().last()
+
     def timeout(self):
         last_log = self.user.logs.all().last()
         last_log.end = timezone.now()

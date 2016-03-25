@@ -1,14 +1,9 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
 {% block page_content %}
 <div class="container" id="timelog" data-user="{{ user.pk }}">
-    {% if employee.is_timed_in %}
-        <a class="timeout" id="time" href="{% url 'timeout' %}">Time Out</a>
-    {% else %}
-        <a class="timein" id="time" href="{% url 'timein' %}">Time In</a>
-    {% endif %}
+    <a class="{{time_class}}" id="time">{{time_txt}}</a>
 </div>
 {% endblock %}
 {% block page_javascript %}
-<script src="{% static 'log/js/timelog.js' %}"></script>
+<script src="{{ STATIC_URL }}log/js/timelog.js"></script>
 {% endblock %}

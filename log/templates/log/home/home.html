@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
 {% block page_content %}
 <div class="row">
     <form class="card center-align" action="{% url 'home' %}" method='post' id="login">
@@ -28,5 +27,5 @@
 </div>
 {% endblock %}
 {% block page_javascript %}
-<script src="{% static 'log/js/home.js' %}"></script>
+<script src="{{ STATIC_URL }}log/js/home.js"></script>
 {% endblock %}
