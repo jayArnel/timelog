@@ -4,14 +4,14 @@
     <div class="col s12 l4 white card" id="time-actions">
         <div class="card-content">
             <span class="card-title">{{ employee }}</span>
-            <div class="center-align">
+            <div>
+            <h6 class="bold">
             {% if employee.is_timed_in %}
-            <h5 class="bold">Timed in since</h5>
-            {% else %}
-            <h5 class="bold">Last Log</h5>
+            Timed in since:
+            {% else %}Last Log:
             {% endif %}
-            <h5>{{ employee.last_log.display.prefix }}</h5>
-            <h5>{{ employee.last_log.display.time }}</h5>
+            {{ employee.last_log.display.prefix }},
+            {{ employee.last_log.display.time }}</h6>
             </div>
             <a class="{{time_class}}" id="time">{{time_txt}}</a>
         </div>
