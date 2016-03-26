@@ -2,7 +2,7 @@
     <div class="nav-wrapper container">
         <a href="{% url 'home' %}" class="brand-logo">Time Log</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#">Welcome, {{ user }}</a></li>
+            <li><a href="#">Welcome, {{ employee.user.first_name }}</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </div>
