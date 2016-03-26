@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.timezone import localtime
 # Create your models here.
 
 
@@ -18,5 +19,5 @@ class Log(models.Model):
     def __str__(self):
         name = (self.owner.username
                 if self.owner.first_name == '' else self.owner.first_name)
-        start = self.start.strftime('%B %d, %Y %I:%M%p')
+        start = localtime(self.start).strftime('%B %d, %Y %I:%M%p')
         return '{0}\'s log on {1}'.format(name, start)
