@@ -8,10 +8,16 @@
             <h6 class="bold">
             {% if employee.is_timed_in %}
             Timed in since:
-            {% else %}Last Log:
-            {% endif %}
             {{ employee.last_log.display.prefix }},
-            {{ employee.last_log.display.time }}</h6>
+            {{ employee.last_log.display.time }}
+            {% else %}
+                {% if employee.last_log %}
+                Last Log:
+                    {{ employee.last_log.display.prefix }},
+                    {{ employee.last_log.display.time }}
+                {% endif %}
+            {% endif %}
+            </h6>
             </div>
             <a class="{{time_class}}" id="time">{{time_txt}}</a>
         </div>
