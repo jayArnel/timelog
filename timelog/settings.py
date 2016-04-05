@@ -136,6 +136,8 @@ STATIC_URL = '/static/'
 STORAGE_PATH = './storage'
 STATIC_ROOT = STORAGE_PATH + '/static'
 
+TASTYPIE_DEFAULT_FORMATS = ['json']
+
 # Check to see if there are any overrides in local_settings
 try:
     from local_settings import *
