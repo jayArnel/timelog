@@ -18,7 +18,15 @@ from django.contrib import admin
 
 import log.urls as log_urls
 
+from log.api import LogResource
+from tastypie.api import Api
+
+api = Api(api_name='api')
+
+api.register(LogResource())
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include(log_urls)),
+    url(r'', include(api.urls)),
 ]
