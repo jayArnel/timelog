@@ -19,11 +19,13 @@ from django.contrib import admin
 import log.urls as log_urls
 
 from log.api import LogResource
+from company.api import UserResource
 from tastypie.api import Api
 
 api = Api(api_name='api')
 
 api.register(LogResource())
+api.register(UserResource())
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
