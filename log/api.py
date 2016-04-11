@@ -10,5 +10,5 @@ class LogResource(ModelResource):
         queryset = Log.objects.all()
         resource_name = 'log'
         filtering = {
-            "name": ALL_WITH_RELATIONS
+            "owner": ALL_WITH_RELATIONS
         }
